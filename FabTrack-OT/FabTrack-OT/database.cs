@@ -27,15 +27,8 @@ namespace FabTrack_OT
         public string IpAddress { get; set; }
         public int Rack { get; set; }
         public int Slot { get; set; }
-        public string Output { get; set; }
     }
-    class class_tag_list()
-    {
-        public static bool DB_B_1 { get; set; }
-        public static byte DB_B { get; set; }
-        public static short DB_I { get; set; }
-        public static double DB_R { get; set; }
-    }
+    
         public class ConfigRoot
     {
         public DbConfig Database { get; set; }
@@ -83,8 +76,7 @@ namespace FabTrack_OT
                         {
                             IpAddress = "192.168.0.1",
                             Rack = 0,
-                            Slot = 1,
-                            Output = "Q0.0"
+                            Slot = 1
                         }
                     };
 
@@ -106,7 +98,6 @@ namespace FabTrack_OT
                 PlcIp = plc.IpAddress;
                 PlcRack = (short)plc.Rack;
                 PlcSlot = (short)plc.Slot;
-                PlcOutput = plc.Output;
             }
             catch (Exception ex)
             {
@@ -277,7 +268,7 @@ namespace FabTrack_OT
             try
             {
                 OpenConnection();
-                string query = @"SELECT id, serie, nombre, ubicacion, comentarios
+                string query = @"SELECT id, serie, nombre, ubicacion,direccion_plc, comentarios
                          FROM lectores 
                          WHERE nombre LIKE @name LIMIT 1"; // Limit 1 si solo quieres el primero
 
@@ -308,8 +299,41 @@ namespace FabTrack_OT
             return lector;
         }
 
+        public bool EscribirBoolPLC(string direccion, bool valor)
+        {
+            try
+            {
+                using (Plc plc = new Plc(CpuType.S71200, PlcIp, PlcRack, PlcSlot))
+                {
+                    plc.Open();
+
+                    if (!plc.IsConnected)
+                    {
+                        MessageBox.Show("❌ No se pudo conectar al PLC.");
+                        return false;
+                    }
+
+                    // Escribir el valor
+                    plc.Write(direccion, valor);
+                   // Console.WriteLine($"✅ Valor {valor} escrito en {direccion}.");
+
+                    // Confirmar la escritura
+                    bool confirmado = (bool)plc.Read(direccion);
+                   // Console.WriteLine($"📖 Valor confirmado: {confirmado}");
+
+                    plc.Close();
+                    return confirmado == valor;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("⚠️ Error al escribir BOOL en el PLC: " + ex.Message);
+                return false;
+            }
+        }
 
 
     }
-    
+
+
 }

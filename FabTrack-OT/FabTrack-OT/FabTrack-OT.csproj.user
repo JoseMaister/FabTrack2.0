@@ -22,9 +22,6 @@
     <Compile Update="readers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="test_plc.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="update_reader.cs">
       <SubType>Form</SubType>
     </Compile>

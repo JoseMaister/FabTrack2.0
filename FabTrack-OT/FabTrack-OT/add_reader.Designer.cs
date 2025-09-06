@@ -32,11 +32,13 @@
             button2 = new Button();
             button1 = new Button();
             panel2 = new Panel();
+            txtdbplc = new TextBox();
             txtserie = new TextBox();
             txtcoments = new TextBox();
             txtubi = new TextBox();
             txtname = new TextBox();
             panel1 = new Panel();
+            label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label1 = new Label();
@@ -51,7 +53,7 @@
             // 
             panel3.Controls.Add(button2);
             panel3.Controls.Add(button1);
-            panel3.Location = new Point(255, 293);
+            panel3.Location = new Point(254, 338);
             panel3.Name = "panel3";
             panel3.Size = new Size(302, 100);
             panel3.TabIndex = 12;
@@ -80,14 +82,22 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(txtdbplc);
             panel2.Controls.Add(txtserie);
             panel2.Controls.Add(txtcoments);
             panel2.Controls.Add(txtubi);
             panel2.Controls.Add(txtname);
             panel2.Location = new Point(425, 78);
             panel2.Name = "panel2";
-            panel2.Size = new Size(317, 197);
+            panel2.Size = new Size(317, 218);
             panel2.TabIndex = 11;
+            // 
+            // txtdbplc
+            // 
+            txtdbplc.Location = new Point(8, 138);
+            txtdbplc.Name = "txtdbplc";
+            txtdbplc.Size = new Size(265, 23);
+            txtdbplc.TabIndex = 6;
             // 
             // txtserie
             // 
@@ -99,14 +109,14 @@
             // 
             // txtcoments
             // 
-            txtcoments.Location = new Point(8, 141);
+            txtcoments.Location = new Point(8, 172);
             txtcoments.Name = "txtcoments";
             txtcoments.Size = new Size(265, 23);
             txtcoments.TabIndex = 4;
             // 
             // txtubi
             // 
-            txtubi.Location = new Point(8, 105);
+            txtubi.Location = new Point(8, 100);
             txtubi.Name = "txtubi";
             txtubi.Size = new Size(265, 23);
             txtubi.TabIndex = 3;
@@ -120,21 +130,33 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
             panel1.Location = new Point(68, 78);
             panel1.Name = "panel1";
-            panel1.Size = new Size(317, 197);
+            panel1.Size = new Size(317, 218);
             panel1.TabIndex = 10;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.Flat;
+            label5.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(29, 138);
+            label5.Name = "label5";
+            label5.Size = new Size(129, 25);
+            label5.TabIndex = 4;
+            label5.Text = "Direccion PLC";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(29, 139);
+            label4.Location = new Point(29, 172);
             label4.Name = "label4";
             label4.Size = new Size(121, 25);
             label4.TabIndex = 3;
@@ -145,7 +167,7 @@
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(29, 105);
+            label3.Location = new Point(29, 100);
             label3.Name = "label3";
             label3.Size = new Size(96, 25);
             label3.TabIndex = 2;
@@ -221,5 +243,7 @@
         private Label label3;
         private TextBox txtserie;
         private Label lblLector;
+        private TextBox txtdbplc;
+        private Label label5;
     }
 }

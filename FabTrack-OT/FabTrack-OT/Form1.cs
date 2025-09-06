@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using static Google.Protobuf.Reflection.FieldOptions.Types;
+using System.Threading.Tasks;
 
 namespace FabTrack_OT
 {
@@ -21,6 +22,9 @@ namespace FabTrack_OT
         private string[] serialesLectores;
         private List<Capture> capturadores = new List<Capture>();
         string location = null;
+        private string[] direccionesPLC; // <- array para guardar la dirección de cada lector en el PLC
+
+        database db = new database();
 
         public Form1()
         {
@@ -33,9 +37,10 @@ namespace FabTrack_OT
             lblUsuarios = new Label[] { lblUsuario1, lblUsuario2, lblUsuario3, lblUsuario4 };
             lblUbicaciones = new Label[] { lblUbicacion1, lblUbicacion2, lblUbicacion3, lblUbicacion4 };
             serialesLectores = new string[lblLectores.Length];
+            direccionesPLC = new string[lblLectores.Length]; // inicializamos array de direcciones
 
-            database db = new database();
-            DataTable dt = db.ExecuteQuery("SELECT nombre, serie, ubicacion FROM lectores", null);
+
+            DataTable dt = db.ExecuteQuery("SELECT nombre, serie, ubicacion, direccion_plc FROM lectores", null);
 
             for (int i = 0; i < dt.Rows.Count && i < lblLectores.Length; i++)
             {
@@ -46,6 +51,7 @@ namespace FabTrack_OT
                 lblUsuarios[i].Text = "";
                 lblUbicaciones[i].Text = dt.Rows[i]["ubicacion"].ToString();
                 location = dt.Rows[i]["ubicacion"].ToString();
+                direccionesPLC[i] = dt.Rows[i]["direccion_plc"].ToString();
             }
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -69,6 +75,14 @@ namespace FabTrack_OT
                     lblAcciones[index].ForeColor = Color.Green;
                     lblUsuarios[index].Text = usuario;
                     RegistrarLog(ReaderSerialNumber.ToString(), usuario);
+                    db.EscribirBoolPLC(direccionesPLC[index], true);
+                    _ = Task.Run(async () =>
+                    {
+                        await Task.Delay(2000); // 2000 ms = 2 segundos
+                        db.EscribirBoolPLC(direccionesPLC[index], false);
+                    });
+
+
 
                 }
             }));
@@ -346,34 +360,9 @@ namespace FabTrack_OT
 
         private void abirPLCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrir_plc();
+           
         }
-        private void abrir_plc()
-        {
-            try
-            {
-                database db = new database(); // lee config del mismo archivo
-                using (Plc plc = new Plc(CpuType.S71200, db.PlcIp, db.PlcRack, db.PlcSlot))
-                {
-                    plc.Open();
-                    if (plc.IsConnected)
-                    {
-                        plc.Write(db.PlcOutput, true);
-                        System.Threading.Thread.Sleep(2000);
-                        plc.Write(db.PlcOutput, false);
-                        MessageBox.Show($"✅ Señal enviada al PLC ({db.PlcOutput})");
-                    }
-                    else
-                    {
-                        MessageBox.Show("❌ No se pudo conectar al PLC");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir PLC: " + ex.Message);
-            }
-        }
+       
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {

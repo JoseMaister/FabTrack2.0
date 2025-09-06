@@ -108,6 +108,7 @@ namespace FabTrack_OT
             string nombre = txtname.Text.Trim();
             string serie = txtserie.Text.Trim();
             string ubicacion = txtubi.Text.Trim();
+            string dbplc = txtdbplc.Text.Trim();
             string comentarios = txtcoments.Text.Trim();
             //string serie = cbLectores.SelectedItem.ToString();
 
@@ -119,7 +120,7 @@ namespace FabTrack_OT
             }
 
             string sqlCheck = $"SELECT COUNT(*) FROM lectores WHERE serie = '{serie}'";
-            string sqlInsert = $"INSERT INTO lectores (nombre, serie, ubicacion, comentarios) VALUES ('{nombre}', '{serie}', '{ubicacion}', '{comentarios}')";
+            string sqlInsert = $"INSERT INTO lectores (nombre, serie, ubicacion,direccion_plc, comentarios) VALUES ('{nombre}', '{serie}', '{ubicacion}','{dbplc}', '{comentarios}')";
 
             database db = new database();
             if (db.OpenConnection())

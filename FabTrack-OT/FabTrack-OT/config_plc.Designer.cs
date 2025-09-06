@@ -33,11 +33,9 @@
             button1 = new Button();
             panel2 = new Panel();
             numSlot = new NumericUpDown();
-            txtOutput = new TextBox();
             numRack = new NumericUpDown();
             txtIp = new TextBox();
             panel1 = new Panel();
-            label4 = new Label();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -82,7 +80,6 @@
             // panel2
             // 
             panel2.Controls.Add(numSlot);
-            panel2.Controls.Add(txtOutput);
             panel2.Controls.Add(numRack);
             panel2.Controls.Add(txtIp);
             panel2.Location = new Point(416, 65);
@@ -96,13 +93,6 @@
             numSlot.Name = "numSlot";
             numSlot.Size = new Size(178, 23);
             numSlot.TabIndex = 15;
-            // 
-            // txtOutput
-            // 
-            txtOutput.Location = new Point(27, 143);
-            txtOutput.Name = "txtOutput";
-            txtOutput.Size = new Size(178, 23);
-            txtOutput.TabIndex = 9;
             // 
             // numRack
             // 
@@ -120,7 +110,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label4);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
@@ -128,17 +117,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(236, 182);
             panel1.TabIndex = 11;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.FlatStyle = FlatStyle.Flat;
-            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(29, 141);
-            label4.Name = "label4";
-            label4.Size = new Size(78, 25);
-            label4.TabIndex = 3;
-            label4.Text = "Output ";
             // 
             // label1
             // 
@@ -199,10 +177,8 @@
         private Button button2;
         private Button button1;
         private Panel panel2;
-        private TextBox txtOutput;
         private TextBox txtIp;
         private Panel panel1;
-        private Label label4;
         private Label label1;
         private Label label2;
         private Label label3;

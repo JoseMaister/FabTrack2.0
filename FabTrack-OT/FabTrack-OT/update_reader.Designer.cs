@@ -33,18 +33,20 @@
             txtBuscar = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
+            txtcoments = new TextBox();
+            txtubi = new TextBox();
             txtSerie = new TextBox();
             txtNombre = new TextBox();
             panel3 = new Panel();
+            label4 = new Label();
+            label5 = new Label();
             label2 = new Label();
             label3 = new Label();
             panel4 = new Panel();
             button1 = new Button();
             button3 = new Button();
-            label4 = new Label();
-            label5 = new Label();
-            txtcoments = new TextBox();
-            txtubi = new TextBox();
+            label6 = new Label();
+            txtdbplc = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -92,14 +94,29 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(txtdbplc);
             panel2.Controls.Add(txtcoments);
             panel2.Controls.Add(txtubi);
             panel2.Controls.Add(txtSerie);
             panel2.Controls.Add(txtNombre);
             panel2.Location = new Point(334, 128);
             panel2.Name = "panel2";
-            panel2.Size = new Size(315, 168);
+            panel2.Size = new Size(315, 203);
             panel2.TabIndex = 13;
+            // 
+            // txtcoments
+            // 
+            txtcoments.Location = new Point(25, 157);
+            txtcoments.Name = "txtcoments";
+            txtcoments.Size = new Size(265, 23);
+            txtcoments.TabIndex = 6;
+            // 
+            // txtubi
+            // 
+            txtubi.Location = new Point(25, 94);
+            txtubi.Name = "txtubi";
+            txtubi.Size = new Size(265, 23);
+            txtubi.TabIndex = 5;
             // 
             // txtSerie
             // 
@@ -117,14 +134,37 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(label6);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(label3);
             panel3.Location = new Point(92, 128);
             panel3.Name = "panel3";
-            panel3.Size = new Size(236, 168);
+            panel3.Size = new Size(236, 203);
             panel3.TabIndex = 12;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.FlatStyle = FlatStyle.Flat;
+            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(29, 152);
+            label4.Name = "label4";
+            label4.Size = new Size(121, 25);
+            label4.TabIndex = 5;
+            label4.Text = "Comentarios";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.Flat;
+            label5.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(29, 94);
+            label5.Name = "label5";
+            label5.Size = new Size(96, 25);
+            label5.TabIndex = 4;
+            label5.Text = "Ubicacion";
             // 
             // label2
             // 
@@ -152,7 +192,7 @@
             // 
             panel4.Controls.Add(button1);
             panel4.Controls.Add(button3);
-            panel4.Location = new Point(218, 321);
+            panel4.Location = new Point(218, 347);
             panel4.Name = "panel4";
             panel4.Size = new Size(302, 81);
             panel4.TabIndex = 14;
@@ -179,41 +219,23 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // label4
+            // label6
             // 
-            label4.AutoSize = true;
-            label4.FlatStyle = FlatStyle.Flat;
-            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(29, 128);
-            label4.Name = "label4";
-            label4.Size = new Size(121, 25);
-            label4.TabIndex = 5;
-            label4.Text = "Comentarios";
+            label6.AutoSize = true;
+            label6.FlatStyle = FlatStyle.Flat;
+            label6.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(29, 127);
+            label6.Name = "label6";
+            label6.Size = new Size(129, 25);
+            label6.TabIndex = 6;
+            label6.Text = "Direccion PLC";
             // 
-            // label5
+            // txtdbplc
             // 
-            label5.AutoSize = true;
-            label5.FlatStyle = FlatStyle.Flat;
-            label5.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(29, 94);
-            label5.Name = "label5";
-            label5.Size = new Size(96, 25);
-            label5.TabIndex = 4;
-            label5.Text = "Ubicacion";
-            // 
-            // txtcoments
-            // 
-            txtcoments.Location = new Point(25, 130);
-            txtcoments.Name = "txtcoments";
-            txtcoments.Size = new Size(265, 23);
-            txtcoments.TabIndex = 6;
-            // 
-            // txtubi
-            // 
-            txtubi.Location = new Point(25, 94);
-            txtubi.Name = "txtubi";
-            txtubi.Size = new Size(265, 23);
-            txtubi.TabIndex = 5;
+            txtdbplc.Location = new Point(25, 128);
+            txtdbplc.Name = "txtdbplc";
+            txtdbplc.Size = new Size(265, 23);
+            txtdbplc.TabIndex = 7;
             // 
             // update_reader
             // 
@@ -255,5 +277,7 @@
         private Label label5;
         private TextBox txtcoments;
         private TextBox txtubi;
+        private Label label6;
+        private TextBox txtdbplc;
     }
 }

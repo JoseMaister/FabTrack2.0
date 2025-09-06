@@ -1648,23 +1648,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jose Castañeda\\.nuget\\packages\\": {},
+    "C:\\Users\\eljos\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\xampp\\htdocs\\templates\\FabTrack\\FabTrack-OT\\FabTrack-OT\\FabTrack-OT.csproj",
+      "projectUniqueName": "C:\\Users\\eljos\\OneDrive\\Documents\\repos\\FabTrack2.0\\FabTrack-OT\\FabTrack-OT\\FabTrack-OT.csproj",
       "projectName": "FabTrack-OT",
-      "projectPath": "C:\\xampp\\htdocs\\templates\\FabTrack\\FabTrack-OT\\FabTrack-OT\\FabTrack-OT.csproj",
-      "packagesPath": "C:\\Users\\Jose Castañeda\\.nuget\\packages\\",
-      "outputPath": "C:\\xampp\\htdocs\\templates\\FabTrack\\FabTrack-OT\\FabTrack-OT\\obj\\",
+      "projectPath": "C:\\Users\\eljos\\OneDrive\\Documents\\repos\\FabTrack2.0\\FabTrack-OT\\FabTrack-OT\\FabTrack-OT.csproj",
+      "packagesPath": "C:\\Users\\eljos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eljos\\OneDrive\\Documents\\repos\\FabTrack2.0\\FabTrack-OT\\FabTrack-OT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jose Castañeda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\eljos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1691,7 +1691,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -1725,7 +1726,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

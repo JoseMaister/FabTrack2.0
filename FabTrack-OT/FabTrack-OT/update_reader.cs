@@ -31,6 +31,7 @@ namespace FabTrack_OT
             string nombre = txtNombre.Text.Trim();
             string serie = txtSerie.Text.Trim();
             string ubicacion = txtubi.Text.Trim();
+            string dbplc = txtdbplc.Text.Trim();
             string comentarios = txtcoments.Text.Trim();
 
             // Preguntar antes de modificar
@@ -44,7 +45,7 @@ namespace FabTrack_OT
             if (result == DialogResult.Yes)
             {
                 string sqlUpdate = @"UPDATE lectores 
-                         SET nombre = @nombre, serie = @serie, ubicacion = @ubicacion, comentarios = @comentarios
+                         SET nombre = @nombre, serie = @serie, ubicacion = @ubicacion, direccion_plc = @dbplc, comentarios = @comentarios
                          WHERE id = @id";
 
                 var parametros = new Dictionary<string, object>
@@ -52,6 +53,7 @@ namespace FabTrack_OT
                         {"@nombre", nombre},
                         {"@serie", serie},
                         {"@ubicacion", ubicacion},
+                        {"@dbplc", dbplc},
                         {"@comentarios", comentarios},
                         {"@id", id_lector}
                     };
@@ -85,6 +87,7 @@ namespace FabTrack_OT
                 txtNombre.Text = lector["nombre"];
                 txtSerie.Text = lector["serie"];
                 txtubi.Text = lector["ubicacion"];
+                txtdbplc.Text = lector["direccion_plc"];
                 txtcoments.Text = lector["comentarios"];
             }
             else

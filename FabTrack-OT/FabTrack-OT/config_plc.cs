@@ -42,7 +42,6 @@ namespace FabTrack_OT
                     txtIp.Text = root.PLC.IpAddress;
                     numRack.Value = root.PLC.Rack;
                     numSlot.Value = root.PLC.Slot;
-                    txtOutput.Text = root.PLC.Output;
                 }
             }
             catch (Exception ex)
@@ -72,8 +71,7 @@ namespace FabTrack_OT
                 {
                     IpAddress = txtIp.Text,
                     Rack = (short)numRack.Value,
-                    Slot = (short)numSlot.Value,
-                    Output = txtOutput.Text
+                    Slot = (short)numSlot.Value
                 };
 
                 string updatedJson = JsonSerializer.Serialize(root, new JsonSerializerOptions { WriteIndented = true });

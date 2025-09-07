@@ -75,14 +75,15 @@ namespace FabTrack_OT
                     lblAcciones[index].ForeColor = Color.Green;
                     lblUsuarios[index].Text = usuario;
                     RegistrarLog(ReaderSerialNumber.ToString(), usuario);
-                    db.EscribirBoolPLC(direccionesPLC[index], true);
-                    _ = Task.Run(async () =>
+                    if (usuario != "Desconocido")
                     {
-                        await Task.Delay(2000); // 2000 ms = 2 segundos
-                        db.EscribirBoolPLC(direccionesPLC[index], false);
-                    });
-
-
+                        db.EscribirBoolPLC(direccionesPLC[index], true);
+                        _ = Task.Run(async () =>
+                        {
+                            await Task.Delay(2000); // 2000 ms = 2 segundos
+                            db.EscribirBoolPLC(direccionesPLC[index], false);
+                        });
+                    }
 
                 }
             }));

@@ -34,7 +34,6 @@
             archivoToolStripMenuItem = new ToolStripMenuItem();
             configurarBaseDeDatosToolStripMenuItem = new ToolStripMenuItem();
             probarConexionToolStripMenuItem = new ToolStripMenuItem();
-            abirPLCToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             configToolStripMenuItem = new ToolStripMenuItem();
             caputarurToolStripMenuItem = new ToolStripMenuItem();
@@ -86,7 +85,7 @@
             // 
             // archivoToolStripMenuItem
             // 
-            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { configurarBaseDeDatosToolStripMenuItem, probarConexionToolStripMenuItem, abirPLCToolStripMenuItem, toolStripMenuItem2 });
+            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { configurarBaseDeDatosToolStripMenuItem, probarConexionToolStripMenuItem, toolStripMenuItem2 });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             archivoToolStripMenuItem.Size = new Size(60, 20);
             archivoToolStripMenuItem.Text = "Archivo";
@@ -104,13 +103,6 @@
             probarConexionToolStripMenuItem.Size = new Size(206, 22);
             probarConexionToolStripMenuItem.Text = "Probar Conexion";
             probarConexionToolStripMenuItem.Click += probarConexionToolStripMenuItem_Click;
-            // 
-            // abirPLCToolStripMenuItem
-            // 
-            abirPLCToolStripMenuItem.Name = "abirPLCToolStripMenuItem";
-            abirPLCToolStripMenuItem.Size = new Size(206, 22);
-            abirPLCToolStripMenuItem.Text = "Abir PLC";
-            abirPLCToolStripMenuItem.Click += abirPLCToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
@@ -460,7 +452,6 @@
         private Label lblUbicacion2;
         private Label lblUbicacion4;
         private ToolStripMenuItem cargarLectoresToolStripMenuItem;
-        private ToolStripMenuItem abirPLCToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem acercaToolStripMenuItem;
     }

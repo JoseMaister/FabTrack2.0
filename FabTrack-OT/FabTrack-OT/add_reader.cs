@@ -120,13 +120,14 @@ namespace FabTrack_OT
             }
 
             string sqlCheck = $"SELECT COUNT(*) FROM lectores WHERE serie = '{serie}'";
-            string sqlInsert = $"INSERT INTO lectores (nombre, serie, ubicacion,direccion_plc, comentarios) VALUES ('{nombre}', '{serie}', '{ubicacion}','{dbplc}', '{comentarios}')";
+            string sqlInsert = $"INSERT INTO lectores (nombre, serie, ubicacion, direccion_plc, comentarios) " +
+                               $"VALUES ('{nombre}', '{serie}', '{ubicacion}', '{dbplc}', '{comentarios}')";
 
             database db = new database();
             if (db.OpenConnection())
             {
                 // Verificar si ya existe
-                int count = Convert.ToInt32(db.ExecuteScalar(sqlCheck)); // ExecuteScalar devuelve el primer valor de la consulta
+                int count = Convert.ToInt32(db.ExecuteScalar(sqlCheck)); // ✅ No se modifica
                 if (count > 0)
                 {
                     MessageBox.Show("⚠️ Este lector ya está registrado.");
@@ -144,12 +145,30 @@ namespace FabTrack_OT
                     {
                         db.ExecuteQuery(sqlInsert, null);
                         MessageBox.Show("✅ Lector registrado correctamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // 🔹 Limpiar los campos menos la serie
+                        txtname.Clear();
+                        txtubi.Clear();
+                        txtdbplc.Clear();
+                        txtcoments.Clear();
+
+                        // 🔹 Preguntar si quiere registrar otro
+                        DialogResult otro = MessageBox.Show(
+                            "🔌 Ahora desconecte el lector.\n\n¿Desea registrar otro lector?",
+                            "Siguiente paso",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                        );
+
+                        if (otro == DialogResult.Yes)
+                        {
+                            DetectarLector(); // 👉 Llamada a tu método
+                        }
                     }
                     else
                     {
                         MessageBox.Show("❌ Registro cancelado.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                 }
 
                 db.CloseConnection();
@@ -159,6 +178,7 @@ namespace FabTrack_OT
                 MessageBox.Show("❌ Error en la conexión.");
             }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

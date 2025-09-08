@@ -106,6 +106,7 @@
             Controls.Add(panel1);
             Name = "reports";
             Text = "reports";
+            Load += reports_Load;
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtReport).EndInit();
             panel1.ResumeLayout(false);

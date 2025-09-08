@@ -23,7 +23,7 @@ namespace FabTrack_Admin
             string query = "SELECT id, CONCAT(nombre, ' ', apellido_paterno, ' ', apellido_materno) AS Nombre, numero_empleado as No_Empleado, telefono as Telef, email as Email, turno as Turno FROM usuarios";
 
             database db = new database();
-            DataTable dt = db.ExecuteQuery(query);
+            DataTable dt = db.ExecuteQuery(query, null);
 
             dtUsers.DataSource = dt;
             dtUsers.ReadOnly = true;

@@ -250,6 +250,7 @@ namespace FabTrack_OT
                     catch (Exception ex)
                     {
                         MessageBox.Show($"No se pudo iniciar lector {reader.Value.SerialNumber}: {ex.Message}");
+                        Clipboard.SetText(ex.ToString());
                     }
                 }
             }
@@ -396,6 +397,12 @@ namespace FabTrack_OT
         private void cargarLectoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cargar_lectores();
+            MessageBox.Show(
+                "⚠️ Si no se detectaron los lectores. Por favor, reinicie la aplicación para que aparezcan correctamente.",
+                "Aviso",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
         }
 
         private void abirPLCToolStripMenuItem_Click(object sender, EventArgs e)

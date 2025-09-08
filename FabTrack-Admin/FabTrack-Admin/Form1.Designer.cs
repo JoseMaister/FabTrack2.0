@@ -42,6 +42,7 @@
             modificarUsuariosToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
             acercaToolStripMenuItem = new ToolStripMenuItem();
+            configurarPLCToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             // archivoToolStripMenuItem
             // 
-            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { configurarBaseDeDatosToolStripMenuItem, testConexionToolStripMenuItem });
+            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { configurarBaseDeDatosToolStripMenuItem, testConexionToolStripMenuItem, configurarPLCToolStripMenuItem });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             archivoToolStripMenuItem.Size = new Size(60, 20);
             archivoToolStripMenuItem.Text = "Archivo";
@@ -146,6 +147,13 @@
             acercaToolStripMenuItem.Text = "Acerca";
             acercaToolStripMenuItem.Click += acercaToolStripMenuItem_Click;
             // 
+            // configurarPLCToolStripMenuItem
+            // 
+            configurarPLCToolStripMenuItem.Name = "configurarPLCToolStripMenuItem";
+            configurarPLCToolStripMenuItem.Size = new Size(206, 22);
+            configurarPLCToolStripMenuItem.Text = "Configurar PLC";
+            configurarPLCToolStripMenuItem.Click += configurarPLCToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -177,5 +185,6 @@
         private ToolStripMenuItem verLectoresToolStripMenuItem;
         private ToolStripMenuItem modificarLectorToolStripMenuItem;
         private ToolStripMenuItem acercaToolStripMenuItem;
+        private ToolStripMenuItem configurarPLCToolStripMenuItem;
     }
 }

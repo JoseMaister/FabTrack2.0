@@ -99,5 +99,11 @@
             MessageBox.Show(mensaje, "Acerca de", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
+        private void configurarPLCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            config_plc frm = new config_plc();
+            frm.ShowDialog();
+        }
     }
 }

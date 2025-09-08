@@ -62,9 +62,21 @@ namespace FabTrack_Admin
                 int filas = db.ExecuteNonQuery(sqlUpdate, parametros);
 
                 if (filas > 0)
+                {
                     MessageBox.Show("✅ Lector modificado correctamente!");
+
+                    // 🔹 Limpiar los TextBox después de modificar
+                    txtBuscar.Clear();
+                    txtNombre.Clear();
+                    txtubi.Clear();
+                    txtdbplc.Clear();
+                    txtcoments.Clear();
+                    txtSerie.Clear(); // Si quieres mantener la serie, deja esta línea comentada
+                }
                 else
+                {
                     MessageBox.Show("❌ No se pudo modificar. Verifica el ID.");
+                }
             }
         }
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FabTrack-OT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d28e98afe85c1e15c87dad179e1b95ae7ebc3afc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7584f570e8330d6dc0b024bb4aa0419e52b478a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("FabTrack-OT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FabTrack-OT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

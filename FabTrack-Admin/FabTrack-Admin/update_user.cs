@@ -81,35 +81,76 @@ namespace FabTrack_Admin
             string no_empleado = txtNumeroEmpleado.Text;
             string telefono = txtTelefono.Text;
             string email = txtEmail.Text;
-            string turno = comboTurno.SelectedItem.ToString();
+            string turno = comboTurno.SelectedItem?.ToString();
 
+            if (string.IsNullOrWhiteSpace(turno))
+            {
+                MessageBox.Show("⚠️ Debes seleccionar un turno.");
+                return;
+            }
 
-            // Construir la sentencia SQL
-            string sqlUpdate = $"UPDATE usuarios " +
-                    $"SET nombre = '{nombre}', " +
-                    $"apellido_paterno = '{paterno}', " +
-                    $"apellido_materno = '{materno}', " +
-                    $"numero_empleado = '{no_empleado}', " +
-                    $"telefono = '{telefono}', " +
-                    $"email = '{email}', " +
-                    $"turno = '{turno}' " +
-                    $"WHERE id = '{id_empleado}'";
+            // Confirmación antes de guardar
+            DialogResult confirm = MessageBox.Show(
+                "¿Está seguro de que desea guardar los cambios del usuario?",
+                "Confirmar modificación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
+            if (confirm != DialogResult.Yes)
+            {
+                return; // Canceló, no se ejecuta el update
+            }
+
+            // Sentencia SQL con parámetros
+            string sqlUpdate = @"
+        UPDATE usuarios
+        SET nombre = @nombre,
+            apellido_paterno = @paterno,
+            apellido_materno = @materno,
+            numero_empleado = @numero_empleado,
+            telefono = @telefono,
+            email = @email,
+            turno = @turno
+        WHERE id = @id_empleado";
+
+            // Diccionario de parámetros
+            var parametros = new Dictionary<string, object>
+    {
+        { "@nombre", nombre },
+        { "@paterno", paterno },
+        { "@materno", materno },
+        { "@numero_empleado", no_empleado },
+        { "@telefono", telefono },
+        { "@email", email },
+        { "@turno", turno },
+        { "@id_empleado", id_empleado }
+    };
 
             // Ejecutar
             database db = new database();
-            if (db.OpenConnection())
+            int rows = db.ExecuteNonQuery(sqlUpdate, parametros);
+
+            if (rows > 0)
             {
-                db.ExecuteQuery(sqlUpdate); // Método que ejecuta la consulta
-                db.CloseConnection();
-                MessageBox.Show("✅ Usuario modficado correctamente!");
+                MessageBox.Show("✅ Usuario modificado correctamente!");
+
+                // 🔹 Limpiar campos
+                txtEmpleadoID.Clear();
+                txtNombre.Clear();
+                txtApellidoP.Clear();
+                txtApellidoM.Clear();
+                txtNumeroEmpleado.Clear();
+                txtTelefono.Clear();
+                txtEmail.Clear();
+                comboTurno.SelectedIndex = -1; // Deseleccionar
             }
             else
             {
-                MessageBox.Show("❌ Error en la conexión.");
+                MessageBox.Show("❌ No se pudo modificar el usuario.");
             }
-
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

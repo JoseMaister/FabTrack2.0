@@ -81,35 +81,32 @@ namespace FabTrack_Admin
                 {"Julio", 7}, {"Agosto", 8}, {"Septiembre", 9}, {"Octubre", 10}, {"Noviembre", 11}, {"Diciembre", 12}
             };
 
-                    int mesSeleccionado = meses[cbMes.SelectedItem.ToString()];
-                    int anioActual = DateTime.Now.Year;
+            int mesSeleccionado = meses[cbMes.SelectedItem.ToString()];
+            int anioActual = DateTime.Now.Year;
 
-                    // Calcular fechas de inicio y fin del mes
-                    DateTime fechaInicio = new DateTime(anioActual, mesSeleccionado, 1, 0, 0, 0);
-                    DateTime fechaFin = new DateTime(anioActual, mesSeleccionado, DateTime.DaysInMonth(anioActual, mesSeleccionado), 23, 59, 59);
+            // Calcular fechas de inicio y fin del mes
+            DateTime fechaInicio = new DateTime(anioActual, mesSeleccionado, 1, 0, 0, 0);
+            DateTime fechaFin = new DateTime(anioActual, mesSeleccionado, DateTime.DaysInMonth(anioActual, mesSeleccionado), 23, 59, 59);
 
-                    string query = @"
-                SELECT lg.*, 
-                       CONCAT(u.nombre, ' ', u.apellido_paterno, ' ', u.apellido_materno) AS nombre_completo, 
-                       l.nombre AS lector
-                FROM log_huellas lg
-                left JOIN usuarios u ON u.numero_empleado = lg.empleado_numero
-                INNER JOIN lectores l ON l.serie = lg.lector_serie
+            string query = @"
+                SELECT lg.lector_serie, lg.empleado_numero, lg.fecha, lg.estado, CONCAT(u.nombre, ' ', u.apellido_paterno, ' ', u.apellido_materno) AS nombre_completo, l.nombre AS lector FROM log_huellas lg left JOIN usuarios u ON u.numero_empleado = lg.empleado_numero INNER JOIN lectores l ON l.serie = lg.lector_serie
                 WHERE lg.fecha BETWEEN @inicio AND @fin
                 ORDER BY lg.fecha ASC";
 
-                    var parametros = new Dictionary<string, object>
+            var parametros = new Dictionary<string, object>
             {
                 {"@inicio", fechaInicio},
                 {"@fin", fechaFin}
             };
 
-                    database db = new database();
-                    DataTable dt = db.ExecuteQuery(query, parametros);
-                    dtReport.DataSource = dt;
+            database db = new database();
+            DataTable dt = db.ExecuteQuery(query, parametros);
+            dtReport.DataSource = dt;
         }
 
+        private void reports_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

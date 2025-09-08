@@ -31,28 +31,29 @@
             panel3 = new Panel();
             button2 = new Button();
             button1 = new Button();
-            panel1 = new Panel();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label1 = new Label();
-            label2 = new Label();
             panel2 = new Panel();
             txtdbplc = new TextBox();
             txtserie = new TextBox();
             txtcoments = new TextBox();
             txtubi = new TextBox();
             txtname = new TextBox();
+            panel1 = new Panel();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            lblLector = new Label();
             panel3.SuspendLayout();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel3
             // 
             panel3.Controls.Add(button2);
             panel3.Controls.Add(button1);
-            panel3.Location = new Point(256, 306);
+            panel3.Location = new Point(254, 338);
             panel3.Name = "panel3";
             panel3.Size = new Size(302, 100);
             panel3.TabIndex = 12;
@@ -79,6 +80,54 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(txtdbplc);
+            panel2.Controls.Add(txtserie);
+            panel2.Controls.Add(txtcoments);
+            panel2.Controls.Add(txtubi);
+            panel2.Controls.Add(txtname);
+            panel2.Location = new Point(425, 78);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(317, 218);
+            panel2.TabIndex = 11;
+            // 
+            // txtdbplc
+            // 
+            txtdbplc.Location = new Point(8, 138);
+            txtdbplc.Name = "txtdbplc";
+            txtdbplc.Size = new Size(265, 23);
+            txtdbplc.TabIndex = 6;
+            // 
+            // txtserie
+            // 
+            txtserie.Enabled = false;
+            txtserie.Location = new Point(8, 60);
+            txtserie.Name = "txtserie";
+            txtserie.Size = new Size(265, 23);
+            txtserie.TabIndex = 5;
+            // 
+            // txtcoments
+            // 
+            txtcoments.Location = new Point(8, 172);
+            txtcoments.Name = "txtcoments";
+            txtcoments.Size = new Size(265, 23);
+            txtcoments.TabIndex = 4;
+            // 
+            // txtubi
+            // 
+            txtubi.Location = new Point(8, 100);
+            txtubi.Name = "txtubi";
+            txtubi.Size = new Size(265, 23);
+            txtubi.TabIndex = 3;
+            // 
+            // txtname
+            // 
+            txtname.Location = new Point(8, 20);
+            txtname.Name = "txtname";
+            txtname.Size = new Size(265, 23);
+            txtname.TabIndex = 0;
+            // 
             // panel1
             // 
             panel1.Controls.Add(label5);
@@ -86,10 +135,10 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(64, 43);
+            panel1.Location = new Point(68, 78);
             panel1.Name = "panel1";
             panel1.Size = new Size(317, 218);
-            panel1.TabIndex = 13;
+            panel1.TabIndex = 10;
             // 
             // label5
             // 
@@ -146,71 +195,36 @@
             label2.TabIndex = 1;
             label2.Text = "Numero de Serie";
             // 
-            // panel2
+            // lblLector
             // 
-            panel2.Controls.Add(txtdbplc);
-            panel2.Controls.Add(txtserie);
-            panel2.Controls.Add(txtcoments);
-            panel2.Controls.Add(txtubi);
-            panel2.Controls.Add(txtname);
-            panel2.Location = new Point(412, 43);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(317, 218);
-            panel2.TabIndex = 14;
-            // 
-            // txtdbplc
-            // 
-            txtdbplc.Location = new Point(8, 138);
-            txtdbplc.Name = "txtdbplc";
-            txtdbplc.Size = new Size(265, 23);
-            txtdbplc.TabIndex = 6;
-            // 
-            // txtserie
-            // 
-            txtserie.Enabled = false;
-            txtserie.Location = new Point(8, 60);
-            txtserie.Name = "txtserie";
-            txtserie.Size = new Size(265, 23);
-            txtserie.TabIndex = 5;
-            // 
-            // txtcoments
-            // 
-            txtcoments.Location = new Point(8, 172);
-            txtcoments.Name = "txtcoments";
-            txtcoments.Size = new Size(265, 23);
-            txtcoments.TabIndex = 4;
-            // 
-            // txtubi
-            // 
-            txtubi.Location = new Point(8, 100);
-            txtubi.Name = "txtubi";
-            txtubi.Size = new Size(265, 23);
-            txtubi.TabIndex = 3;
-            // 
-            // txtname
-            // 
-            txtname.Location = new Point(8, 20);
-            txtname.Name = "txtname";
-            txtname.Size = new Size(265, 23);
-            txtname.TabIndex = 0;
+            lblLector.AutoSize = true;
+            lblLector.FlatStyle = FlatStyle.Flat;
+            lblLector.Font = new Font("Segoe UI Semibold", 26F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLector.Location = new Point(160, 9);
+            lblLector.Name = "lblLector";
+            lblLector.Size = new Size(0, 47);
+            lblLector.TabIndex = 13;
+            lblLector.TextAlign = ContentAlignment.TopCenter;
             // 
             // add_reader
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblLector);
+            Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(panel3);
             Name = "add_reader";
             Text = "Agregar Lector";
-            Load += add_reader_Load_1;
+            Load += add_reader_Load;
             panel3.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -218,17 +232,18 @@
         private Panel panel3;
         private Button button2;
         private Button button1;
+        private Panel panel2;
+        private TextBox txtname;
         private Panel panel1;
-        private Label label5;
-        private Label label4;
-        private Label label3;
         private Label label1;
         private Label label2;
-        private Panel panel2;
-        private TextBox txtdbplc;
-        private TextBox txtserie;
         private TextBox txtcoments;
         private TextBox txtubi;
-        private TextBox txtname;
+        private Label label4;
+        private Label label3;
+        private TextBox txtserie;
+        private Label lblLector;
+        private TextBox txtdbplc;
+        private Label label5;
     }
 }

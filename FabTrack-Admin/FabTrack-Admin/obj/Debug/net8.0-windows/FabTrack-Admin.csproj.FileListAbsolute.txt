@@ -195,3 +195,5 @@ C:\xampp\htdocs\templates\FabTrack2.0\FabTrack-Admin\FabTrack-Admin\obj\Debug\ne
 C:\xampp\htdocs\templates\FabTrack2.0\FabTrack-Admin\FabTrack-Admin\obj\Debug\net8.0-windows\ref\FabTrack-Admin.dll
 C:\xampp\htdocs\templates\FabTrack2.0\FabTrack-Admin\FabTrack-Admin\obj\Debug\net8.0-windows\FabTrack_Admin.readers.resources
 C:\xampp\htdocs\templates\FabTrack2.0\FabTrack-Admin\FabTrack-Admin\obj\Debug\net8.0-windows\FabTrack_Admin.update_reader.resources
+C:\xampp\htdocs\templates\FabTrack2.0\FabTrack-Admin\FabTrack-Admin\obj\Debug\net8.0-windows\FabTrack_Admin.config_plc.resources
+C:\xampp\htdocs\templates\FabTrack2.0\FabTrack-Admin\FabTrack-Admin\bin\Debug\net8.0-windows\S7.Net.dll

@@ -93,7 +93,7 @@ namespace FabTrack_Admin
                        CONCAT(u.nombre, ' ', u.apellido_paterno, ' ', u.apellido_materno) AS nombre_completo, 
                        l.nombre AS lector
                 FROM log_huellas lg
-                INNER JOIN usuarios u ON u.numero_empleado = lg.empleado_numero
+                left JOIN usuarios u ON u.numero_empleado = lg.empleado_numero
                 INNER JOIN lectores l ON l.serie = lg.lector_serie
                 WHERE lg.fecha BETWEEN @inicio AND @fin
                 ORDER BY lg.fecha ASC";

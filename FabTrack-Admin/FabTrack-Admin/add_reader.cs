@@ -43,8 +43,11 @@ namespace FabTrack_Admin
         private void button2_Click(object sender, EventArgs e)
         {
             string nombre = txtname.Text.Trim();
-            //  string serie = txtserie.Text.Trim();
-            string serie = cbLectores.SelectedItem.ToString();
+            string serie = txtserie.Text.Trim();
+            string ubicacion = txtubi.Text.Trim();
+            string dbplc = txtdbplc.Text.Trim();
+            string comentarios = txtcoments.Text.Trim();
+            //string serie = cbLectores.SelectedItem.ToString();
 
             // Validaciones básicas
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(serie))
@@ -54,7 +57,7 @@ namespace FabTrack_Admin
             }
 
             string sqlCheck = $"SELECT COUNT(*) FROM lectores WHERE serie = '{serie}'";
-            string sqlInsert = $"INSERT INTO lectores (nombre, serie) VALUES ('{nombre}', '{serie}')";
+            string sqlInsert = $"INSERT INTO lectores (nombre, serie, ubicacion,direccion_plc, comentarios) VALUES ('{nombre}', '{serie}', '{ubicacion}','{dbplc}', '{comentarios}')";
 
             database db = new database();
             if (db.OpenConnection())
@@ -67,8 +70,23 @@ namespace FabTrack_Admin
                 }
                 else
                 {
-                    db.ExecuteQuery(sqlInsert);
-                    MessageBox.Show("✅ Lector registrado correctamente!");
+                    DialogResult result = MessageBox.Show(
+                         "¿Estás seguro de registrar este lector?",
+                         "Confirmar acción",
+                         MessageBoxButtons.YesNo,
+                         MessageBoxIcon.Question
+                     );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        db.ExecuteQuery(sqlInsert, null);
+                        MessageBox.Show("✅ Lector registrado correctamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("❌ Registro cancelado.", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
                 }
 
                 db.CloseConnection();
@@ -91,8 +109,8 @@ namespace FabTrack_Admin
 
         private void add_reader_Load_1(object sender, EventArgs e)
         {
-            DetectarLectores();
-            //DetectarLector();
+            //DetectarLectores();
+            DetectarLector();
         }
         private void DetectarLector()
         {
@@ -131,7 +149,7 @@ namespace FabTrack_Admin
                 ReadersCollection readers = new ReadersCollection();
 
                 // Limpia el combobox antes de llenarlo
-                cbLectores.Items.Clear();
+               // cbLectores.Items.Clear();
 
                 if (readers.Count > 0)
                 {
@@ -145,11 +163,11 @@ namespace FabTrack_Admin
                             serial = serial.Replace("{", "").Replace("}", "").Trim();
 
                         // Agrega al combobox
-                        cbLectores.Items.Add(serial);
+                        //cbLectores.Items.Add(serial);
                     }
 
                     // Selecciona el primer elemento por defecto
-                    cbLectores.SelectedIndex = 0;
+                  //  cbLectores.SelectedIndex = 0;
 
                     //   MessageBox.Show("Lectores detectados: " + readers.Count);
                 }

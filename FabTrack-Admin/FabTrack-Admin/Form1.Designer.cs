@@ -34,17 +34,20 @@
             testConexionToolStripMenuItem = new ToolStripMenuItem();
             configToolStripMenuItem = new ToolStripMenuItem();
             capturarLectorToolStripMenuItem = new ToolStripMenuItem();
+            verLectoresToolStripMenuItem = new ToolStripMenuItem();
+            modificarLectorToolStripMenuItem = new ToolStripMenuItem();
             accionesToolStripMenuItem = new ToolStripMenuItem();
             altaUsuariosToolStripMenuItem = new ToolStripMenuItem();
             verUsuariosToolStripMenuItem = new ToolStripMenuItem();
             modificarUsuariosToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
+            acercaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configToolStripMenuItem, accionesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configToolStripMenuItem, accionesToolStripMenuItem, acercaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -75,7 +78,7 @@
             // 
             // configToolStripMenuItem
             // 
-            configToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { capturarLectorToolStripMenuItem });
+            configToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { capturarLectorToolStripMenuItem, verLectoresToolStripMenuItem, modificarLectorToolStripMenuItem });
             configToolStripMenuItem.Name = "configToolStripMenuItem";
             configToolStripMenuItem.Size = new Size(55, 20);
             configToolStripMenuItem.Text = "Config";
@@ -83,9 +86,23 @@
             // capturarLectorToolStripMenuItem
             // 
             capturarLectorToolStripMenuItem.Name = "capturarLectorToolStripMenuItem";
-            capturarLectorToolStripMenuItem.Size = new Size(156, 22);
+            capturarLectorToolStripMenuItem.Size = new Size(158, 22);
             capturarLectorToolStripMenuItem.Text = "Capturar Lector";
             capturarLectorToolStripMenuItem.Click += capturarLectorToolStripMenuItem_Click;
+            // 
+            // verLectoresToolStripMenuItem
+            // 
+            verLectoresToolStripMenuItem.Name = "verLectoresToolStripMenuItem";
+            verLectoresToolStripMenuItem.Size = new Size(158, 22);
+            verLectoresToolStripMenuItem.Text = "Ver lectores";
+            verLectoresToolStripMenuItem.Click += verLectoresToolStripMenuItem_Click;
+            // 
+            // modificarLectorToolStripMenuItem
+            // 
+            modificarLectorToolStripMenuItem.Name = "modificarLectorToolStripMenuItem";
+            modificarLectorToolStripMenuItem.Size = new Size(158, 22);
+            modificarLectorToolStripMenuItem.Text = "Modificar lector";
+            modificarLectorToolStripMenuItem.Click += modificarLectorToolStripMenuItem_Click;
             // 
             // accionesToolStripMenuItem
             // 
@@ -122,6 +139,13 @@
             reportesToolStripMenuItem.Text = "Reportes";
             reportesToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
             // 
+            // acercaToolStripMenuItem
+            // 
+            acercaToolStripMenuItem.Name = "acercaToolStripMenuItem";
+            acercaToolStripMenuItem.Size = new Size(55, 20);
+            acercaToolStripMenuItem.Text = "Acerca";
+            acercaToolStripMenuItem.Click += acercaToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -150,5 +174,8 @@
         private ToolStripMenuItem reportesToolStripMenuItem;
         private ToolStripMenuItem configurarBaseDeDatosToolStripMenuItem;
         private ToolStripMenuItem testConexionToolStripMenuItem;
+        private ToolStripMenuItem verLectoresToolStripMenuItem;
+        private ToolStripMenuItem modificarLectorToolStripMenuItem;
+        private ToolStripMenuItem acercaToolStripMenuItem;
     }
 }

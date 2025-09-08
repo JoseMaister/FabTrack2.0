@@ -29,6 +29,8 @@ namespace FabTrack_OT
         public Form1()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+
         }
         private void cargar_lectores()
         {
@@ -56,9 +58,37 @@ namespace FabTrack_OT
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Size = new System.Drawing.Size(
+                Screen.PrimaryScreen.Bounds.Width,
+                Screen.PrimaryScreen.Bounds.Height
+            );
+            this.Location = new System.Drawing.Point(0, 0);
+
+            int w = this.ClientSize.Width / 2;
+            int h = this.ClientSize.Height / 2;
+
+            int offsetY = (int)(0.1 * this.ClientSize.Height); // 10% desde arriba
+
+            panel1.SetBounds(0, offsetY, w, h - offsetY);          // Arriba izquierda
+            panel2.SetBounds(w, offsetY, w, h - offsetY);         // Arriba derecha
+            panel3.SetBounds(0, h + offsetY, w, h - offsetY);     // Abajo izquierda
+            panel4.SetBounds(w, offsetY + h, w, h - offsetY);     // Abajo derecha
+
+            lblLector.AutoSize = true; // Ajusta el tamaño al texto
+            lblLector.TextAlign = ContentAlignment.MiddleCenter; // Alineación interna
+
+            // Calcular posición
+            int offsetY_lector = (int)(0.03 * panel1.ClientSize.Height); // 3% desde arriba
+
+            lblLector.Location = new Point(
+                (panel1.ClientSize.Width - lblLector.Width) / 2, // centrado horizontal
+                offsetY_lector                                           // 3% desde arriba
+            );
 
             cargar_lectores();
             IniciarCaptura();
+
         }
 
         public void OnComplete(object Capture, string ReaderSerialNumber, Sample Sample)
@@ -66,6 +96,15 @@ namespace FabTrack_OT
             this.Invoke(new Action(() =>
             {
                 string usuario = VerificarUsuario(Sample) ?? "Desconocido";
+                string estado = null;
+                if (usuario != "Desconocido")
+                {
+                    estado = "ACCESO";
+                }
+                else
+                {
+                    estado = "NO ACCESO";
+                }
 
                 int index = Array.FindIndex(serialesLectores, s => s.Trim().Equals(ReaderSerialNumber.Trim(), StringComparison.OrdinalIgnoreCase));
                 if (index != -1)
@@ -74,7 +113,7 @@ namespace FabTrack_OT
                     lblAcciones[index].Text = $"📌 Activado";
                     lblAcciones[index].ForeColor = Color.Green;
                     lblUsuarios[index].Text = usuario;
-                    RegistrarLog(ReaderSerialNumber.ToString(), usuario);
+                    RegistrarLog(ReaderSerialNumber.ToString(), usuario, estado);
                     if (usuario != "Desconocido")
                     {
                         db.EscribirBoolPLC(direccionesPLC[index], true);
@@ -275,7 +314,7 @@ namespace FabTrack_OT
                 return null;
             }
         }
-        private void RegistrarLog(string lectorSerie, string empleadoNumero)
+        private void RegistrarLog(string lectorSerie, string empleadoNumero, string estado)
         {
             try
             {
@@ -289,7 +328,7 @@ namespace FabTrack_OT
             {
                 {"@serie", lectorSerie},
                 {"@num", empleadoNumero},
-                {"@estado", "OK"}
+                {"@estado", estado}
             };
 
                 db.ExecuteNonQuery(query, parametros);
@@ -361,14 +400,37 @@ namespace FabTrack_OT
 
         private void abirPLCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
-       
+
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             config_plc frm = new config_plc();
             frm.ShowDialog();
+        }
+
+        private void acercaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string mensaje =
+"Acerca de esta aplicación\n\n" +
+"Esta aplicación ha sido desarrollada y personalizada por InnovateX de México para el cliente final ZF-LifeTec, adquirida a través de su proveedor autorizado Grupo Regel.\n\n" +
+"Su propósito principal es activar la estación de trabajo correspondiente mediante la captura de huella digital, dependiendo del lector utilizado. De esta manera, se garantiza un control seguro, eficiente y exclusivo del acceso y funcionamiento de la estación asignada.\n\n" +
+"Soporte y asistencia técnica\n\n" +
+"Para cualquier duda, incidencia o solicitud de soporte:\n" +
+"1. Primer canal de contacto: Su proveedor autorizado Grupo Regel, quien le vendió la aplicación y podrá atender la mayoría de sus requerimientos.\n" +
+"2. Contacto directo con InnovateX: Si tras este proceso el problema persiste y se confirma que está estrictamente relacionado con la aplicación de software, podrá comunicarse directamente con nosotros a través de:\n" +
+"🌐 Sitio web: https://innovatexmexico.com\n\n" +
+"Aviso legal y propiedad intelectual\n\n" +
+"Esta aplicación es propiedad intelectual de InnovateX de México y ha sido autorizada exclusivamente para su instalación y uso en los equipos designados del cliente final ZF-LifeTec.\n\n" +
+"Queda estrictamente prohibido:\n" +
+"- Instalarla en equipos no autorizados.\n" +
+"- Copiar, distribuir o modificar el software sin consentimiento expreso y por escrito de InnovateX de México.\n\n" +
+"Cualquier uso no autorizado podrá derivar en acciones legales conforme a la normativa vigente en materia de propiedad intelectual y uso de software.\n\n" +
+"Protección adicional\n\n" +
+"El contenido de esta aplicación incluye marcas de agua digitales y códigos internos que permiten identificar la instalación y el equipo autorizado, asegurando que la aplicación no pueda ser reproducida o distribuida de forma no autorizada.";
+
+            MessageBox.Show(mensaje, "Acerca de", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

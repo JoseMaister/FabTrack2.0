@@ -282,6 +282,7 @@ namespace FabTrack_OT
                     lector["serie"] = reader["serie"].ToString();
                     lector["nombre"] = reader["nombre"].ToString();
                     lector["ubicacion"] = reader["ubicacion"].ToString();
+                    lector["direccion_plc"] = reader["direccion_plc"].ToString();
                     lector["comentarios"] = reader["comentarios"].ToString();
                 }
 

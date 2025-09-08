@@ -137,22 +137,31 @@ namespace FabTrack_Admin
         }*/
 
         // INSERT, UPDATE, DELETE → retorna filas afectadas
-        public int ExecuteNonQuery(string query)
+        public int ExecuteNonQuery(string query, Dictionary<string, object> parametros)
         {
             int rowsAffected = 0;
             try
             {
-                OpenConnection();
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                rowsAffected = cmd.ExecuteNonQuery();
+                if (OpenConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        if (parametros != null)
+                        {
+                            foreach (var par in parametros)
+                                cmd.Parameters.AddWithValue(par.Key, par.Value);
+                        }
+
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                    CloseConnection();
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error en NonQuery: " + ex.Message);
-            }
-            finally
-            {
-                CloseConnection();
+                Clipboard.SetText(ex.ToString());
+                MessageBox.Show("Error en NonQuery con parámetros: " + ex.Message);
+
             }
             return rowsAffected;
         }
@@ -222,7 +231,45 @@ namespace FabTrack_Admin
             return empleado;
         }
 
-     
+        public Dictionary<string, string> GetLectorPorNombre(string nombre)
+        {
+            Dictionary<string, string> lector = new Dictionary<string, string>();
+
+            try
+            {
+                OpenConnection();
+                string query = @"SELECT id, serie, nombre, ubicacion,direccion_plc, comentarios
+                         FROM lectores 
+                         WHERE nombre LIKE @name LIMIT 1"; // Limit 1 si solo quieres el primero
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", $"%{nombre}%"); // % comodín para LIKE
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    lector["id"] = reader["id"].ToString();
+                    lector["serie"] = reader["serie"].ToString();
+                    lector["nombre"] = reader["nombre"].ToString();
+                    lector["ubicacion"] = reader["ubicacion"].ToString();
+                    lector["direccion_plc"] = reader["direccion_plc"].ToString();
+                    lector["comentarios"] = reader["comentarios"].ToString();
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener lector: " + ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return lector;
+        }
+
 
     }
 

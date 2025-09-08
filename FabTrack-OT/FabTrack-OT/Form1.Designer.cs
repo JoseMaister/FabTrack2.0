@@ -35,11 +35,13 @@
             configurarBaseDeDatosToolStripMenuItem = new ToolStripMenuItem();
             probarConexionToolStripMenuItem = new ToolStripMenuItem();
             abirPLCToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem2 = new ToolStripMenuItem();
             configToolStripMenuItem = new ToolStripMenuItem();
             caputarurToolStripMenuItem = new ToolStripMenuItem();
             verLectoresToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
             cargarLectoresToolStripMenuItem = new ToolStripMenuItem();
+            acercaToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             lblUbicacion1 = new Label();
             lblUsuario1 = new Label();
@@ -61,7 +63,6 @@
             lblAccion4 = new Label();
             lblLector4 = new Label();
             lblLector = new Label();
-            toolStripMenuItem2 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -76,7 +77,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configToolStripMenuItem, cargarLectoresToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configToolStripMenuItem, cargarLectoresToolStripMenuItem, acercaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -110,6 +111,13 @@
             abirPLCToolStripMenuItem.Size = new Size(206, 22);
             abirPLCToolStripMenuItem.Text = "Abir PLC";
             abirPLCToolStripMenuItem.Click += abirPLCToolStripMenuItem_Click;
+            // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(206, 22);
+            toolStripMenuItem2.Text = "Configurar PLC";
+            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
             // configToolStripMenuItem
             // 
@@ -145,6 +153,13 @@
             cargarLectoresToolStripMenuItem.Size = new Size(98, 20);
             cargarLectoresToolStripMenuItem.Text = "Cargar lectores";
             cargarLectoresToolStripMenuItem.Click += cargarLectoresToolStripMenuItem_Click;
+            // 
+            // acercaToolStripMenuItem
+            // 
+            acercaToolStripMenuItem.Name = "acercaToolStripMenuItem";
+            acercaToolStripMenuItem.Size = new Size(55, 20);
+            acercaToolStripMenuItem.Text = "Acerca";
+            acercaToolStripMenuItem.Click += acercaToolStripMenuItem_Click;
             // 
             // panel1
             // 
@@ -377,18 +392,11 @@
             lblLector.AutoSize = true;
             lblLector.FlatStyle = FlatStyle.Flat;
             lblLector.Font = new Font("Segoe UI Semibold", 26F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLector.Location = new Point(169, 37);
+            lblLector.Location = new Point(13, 37);
             lblLector.Name = "lblLector";
             lblLector.Size = new Size(0, 47);
             lblLector.TabIndex = 7;
             lblLector.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(206, 22);
-            toolStripMenuItem2.Text = "Configurar PLC";
-            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
             // Form1
             // 
@@ -403,7 +411,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "FabTrack";
+            Text = "FabTrack OT";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -454,5 +462,6 @@
         private ToolStripMenuItem cargarLectoresToolStripMenuItem;
         private ToolStripMenuItem abirPLCToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem acercaToolStripMenuItem;
     }
 }

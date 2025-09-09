@@ -1,15 +1,15 @@
-﻿using S7.Net;
-using DPFP;
+﻿using DPFP;
 using DPFP.Capture;
 using FabTrack_OT;
+using S7.Net;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Google.Protobuf.Reflection.FieldOptions.Types;
-using System.Threading.Tasks;
 
 namespace FabTrack_OT
 {
@@ -438,6 +438,12 @@ namespace FabTrack_OT
 "El contenido de esta aplicación incluye marcas de agua digitales y códigos internos que permiten identificar la instalación y el equipo autorizado, asegurando que la aplicación no pueda ser reproducida o distribuida de forma no autorizada.";
 
             MessageBox.Show(mensaje, "Acerca de", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            reports frm = new reports();
+            frm.ShowDialog();
         }
     }
 }

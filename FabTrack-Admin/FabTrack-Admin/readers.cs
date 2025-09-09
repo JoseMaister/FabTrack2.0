@@ -20,7 +20,7 @@ namespace FabTrack_Admin
 
         private void readers_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM lectores";
+            string query = "SELECT * FROM lectores"; // Traemos activo
 
             database db = new database();
             DataTable dt = db.ExecuteQuery(query, null);
@@ -30,12 +30,33 @@ namespace FabTrack_Admin
 
             // Ajustar columnas automáticamente según contenido
             dtReaders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            // Opcional: que ocupe todo el espacio restante
             dtReaders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            dtReaders.Columns["id"].Visible = false; // opcional
+            dtReaders.Columns["id"].Visible = false;     // opcional
+            dtReaders.Columns["activo"].Visible = false; // opcional, solo para control interno
+
+            // Evento para colorear filas según activo
+            dtReaders.CellFormatting -= DtReaders_CellFormatting; // evitar duplicar
+            dtReaders.CellFormatting += DtReaders_CellFormatting;
         }
+
+        private void DtReaders_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dtReaders.Rows[e.RowIndex].Cells["activo"].Value != null)
+            {
+                int activo = Convert.ToInt32(dtReaders.Rows[e.RowIndex].Cells["activo"].Value);
+                if (activo == 0)
+                {
+                    dtReaders.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                }
+                else
+                {
+                    dtReaders.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
+        }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {

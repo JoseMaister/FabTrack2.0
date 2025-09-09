@@ -56,6 +56,17 @@ namespace FabTrack_Admin
                 {
                     comboTurno.SelectedIndex = -1; // Ninguno seleccionado si no coincide
                 }
+                if (empleado.ContainsKey("activo"))
+                {
+                    bool estaActivo = empleado["activo"] == "1";
+                    chbactivo.Checked = estaActivo;
+                    chbactivo.Text = estaActivo ? "Activo" : "Inactivo";
+                }
+                else
+                {
+                    chbactivo.Checked = false;
+                    chbactivo.Text = "Inactivo";
+                }
 
             }
             else
@@ -82,6 +93,7 @@ namespace FabTrack_Admin
             string telefono = txtTelefono.Text;
             string email = txtEmail.Text;
             string turno = comboTurno.SelectedItem?.ToString();
+            int activo = chbactivo.Checked ? 1 : 0;
 
             if (string.IsNullOrWhiteSpace(turno))
             {
@@ -111,7 +123,8 @@ namespace FabTrack_Admin
             numero_empleado = @numero_empleado,
             telefono = @telefono,
             email = @email,
-            turno = @turno
+            turno = @turno,
+            activo = @activo
         WHERE id = @id_empleado";
 
             // Diccionario de parámetros
@@ -124,6 +137,7 @@ namespace FabTrack_Admin
         { "@telefono", telefono },
         { "@email", email },
         { "@turno", turno },
+        { "@activo", activo },
         { "@id_empleado", id_empleado }
     };
 
@@ -144,6 +158,7 @@ namespace FabTrack_Admin
                 txtTelefono.Clear();
                 txtEmail.Clear();
                 comboTurno.SelectedIndex = -1; // Deseleccionar
+                chbactivo.Text = "Inactivo";
             }
             else
             {

@@ -62,6 +62,7 @@
             lblAccion4 = new Label();
             lblLector4 = new Label();
             lblLector = new Label();
+            reportesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -76,7 +77,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configToolStripMenuItem, cargarLectoresToolStripMenuItem, acercaToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configToolStripMenuItem, cargarLectoresToolStripMenuItem, acercaToolStripMenuItem, reportesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -121,21 +122,21 @@
             // caputarurToolStripMenuItem
             // 
             caputarurToolStripMenuItem.Name = "caputarurToolStripMenuItem";
-            caputarurToolStripMenuItem.Size = new Size(158, 22);
+            caputarurToolStripMenuItem.Size = new Size(180, 22);
             caputarurToolStripMenuItem.Text = "Capturar Lector";
             caputarurToolStripMenuItem.Click += caputarurToolStripMenuItem_Click;
             // 
             // verLectoresToolStripMenuItem
             // 
             verLectoresToolStripMenuItem.Name = "verLectoresToolStripMenuItem";
-            verLectoresToolStripMenuItem.Size = new Size(158, 22);
+            verLectoresToolStripMenuItem.Size = new Size(180, 22);
             verLectoresToolStripMenuItem.Text = "Ver lectores";
             verLectoresToolStripMenuItem.Click += verLectoresToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(158, 22);
+            toolStripMenuItem1.Size = new Size(180, 22);
             toolStripMenuItem1.Text = "Modificar lector";
             toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
@@ -390,6 +391,13 @@
             lblLector.TabIndex = 7;
             lblLector.TextAlign = ContentAlignment.TopCenter;
             // 
+            // reportesToolStripMenuItem
+            // 
+            reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            reportesToolStripMenuItem.Size = new Size(65, 20);
+            reportesToolStripMenuItem.Text = "Reportes";
+            reportesToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -454,5 +462,6 @@
         private ToolStripMenuItem cargarLectoresToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem acercaToolStripMenuItem;
+        private ToolStripMenuItem reportesToolStripMenuItem;
     }
 }

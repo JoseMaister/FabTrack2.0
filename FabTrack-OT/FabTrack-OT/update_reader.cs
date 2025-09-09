@@ -33,6 +33,7 @@ namespace FabTrack_OT
             string ubicacion = txtubi.Text.Trim();
             string dbplc = txtdbplc.Text.Trim();
             string comentarios = txtcoments.Text.Trim();
+            int activo = chbactivo.Checked ? 1 : 0;
 
             // Preguntar antes de modificar
             DialogResult result = MessageBox.Show(
@@ -45,7 +46,7 @@ namespace FabTrack_OT
             if (result == DialogResult.Yes)
             {
                 string sqlUpdate = @"UPDATE lectores 
-                         SET nombre = @nombre, serie = @serie, ubicacion = @ubicacion, direccion_plc = @dbplc, comentarios = @comentarios
+                         SET nombre = @nombre, serie = @serie, ubicacion = @ubicacion, direccion_plc = @dbplc,activo = @activo, comentarios = @comentarios
                          WHERE id = @id";
 
                 var parametros = new Dictionary<string, object>
@@ -55,6 +56,7 @@ namespace FabTrack_OT
                         {"@ubicacion", ubicacion},
                         {"@dbplc", dbplc},
                         {"@comentarios", comentarios},
+                        {"@activo", activo },
                         {"@id", id_lector}
                     };
 
@@ -66,11 +68,13 @@ namespace FabTrack_OT
                     MessageBox.Show("✅ Lector modificado correctamente!");
 
                     // 🔹 Limpiar los TextBox después de modificar
+                    txtBuscar.Clear();
                     txtNombre.Clear();
                     txtubi.Clear();
                     txtdbplc.Clear();
                     txtcoments.Clear();
-                    txtSerie.Clear(); // Deja comentado si quieres mantener la serie
+                    txtSerie.Clear(); // Si quieres mantener la serie, deja esta línea comentada
+                    chbactivo.Text = "Inactivo";
                 }
                 else
                 {
@@ -100,6 +104,18 @@ namespace FabTrack_OT
                 txtubi.Text = lector["ubicacion"];
                 txtdbplc.Text = lector["direccion_plc"];
                 txtcoments.Text = lector["comentarios"];
+
+                if (lector.ContainsKey("activo"))
+                {
+                    bool estaActivo = lector["activo"] == "1";
+                    chbactivo.Checked = estaActivo;
+                    chbactivo.Text = estaActivo ? "Activo" : "Inactivo";
+                }
+                else
+                {
+                    chbactivo.Checked = false;
+                    chbactivo.Text = "Inactivo";
+                }
             }
             else
             {

@@ -32,6 +32,7 @@
             button2 = new Button();
             button1 = new Button();
             panel2 = new Panel();
+            chbactivo = new CheckBox();
             comboTurno = new ComboBox();
             txtEmail = new TextBox();
             txtTelefono = new TextBox();
@@ -40,6 +41,7 @@
             txtApellidoP = new TextBox();
             txtNombre = new TextBox();
             panel1 = new Panel();
+            label9 = new Label();
             label4 = new Label();
             label7 = new Label();
             label1 = new Label();
@@ -105,6 +107,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(chbactivo);
             panel2.Controls.Add(comboTurno);
             panel2.Controls.Add(txtEmail);
             panel2.Controls.Add(txtTelefono);
@@ -114,8 +117,19 @@
             panel2.Controls.Add(txtNombre);
             panel2.Location = new Point(335, 74);
             panel2.Name = "panel2";
-            panel2.Size = new Size(375, 295);
+            panel2.Size = new Size(375, 315);
             panel2.TabIndex = 11;
+            // 
+            // chbactivo
+            // 
+            chbactivo.AutoSize = true;
+            chbactivo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            chbactivo.Location = new Point(12, 281);
+            chbactivo.Name = "chbactivo";
+            chbactivo.Size = new Size(87, 29);
+            chbactivo.TabIndex = 7;
+            chbactivo.Text = "Activo";
+            chbactivo.UseVisualStyleBackColor = true;
             // 
             // comboTurno
             // 
@@ -170,6 +184,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label9);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label1);
@@ -179,8 +194,19 @@
             panel1.Controls.Add(label3);
             panel1.Location = new Point(93, 74);
             panel1.Name = "panel1";
-            panel1.Size = new Size(236, 295);
+            panel1.Size = new Size(236, 315);
             panel1.TabIndex = 10;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.FlatStyle = FlatStyle.Flat;
+            label9.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(29, 282);
+            label9.Name = "label9";
+            label9.Size = new Size(67, 25);
+            label9.TabIndex = 7;
+            label9.Text = "Activo";
             // 
             // label4
             // 
@@ -303,7 +329,7 @@
             panel5.Controls.Add(txtHuella1);
             panel5.Controls.Add(btnAgregar1);
             panel5.Controls.Add(button4);
-            panel5.Location = new Point(12, 375);
+            panel5.Location = new Point(12, 395);
             panel5.Name = "panel5";
             panel5.Size = new Size(775, 74);
             panel5.TabIndex = 13;
@@ -344,7 +370,7 @@
             panel6.Controls.Add(txtHuella2);
             panel6.Controls.Add(btnAgregar2);
             panel6.Controls.Add(button6);
-            panel6.Location = new Point(12, 455);
+            panel6.Location = new Point(12, 475);
             panel6.Name = "panel6";
             panel6.Size = new Size(775, 74);
             panel6.TabIndex = 14;
@@ -385,7 +411,7 @@
             panel7.Controls.Add(txtHuella3);
             panel7.Controls.Add(btnAgregar3);
             panel7.Controls.Add(button8);
-            panel7.Location = new Point(12, 535);
+            panel7.Location = new Point(12, 555);
             panel7.Name = "panel7";
             panel7.Size = new Size(775, 74);
             panel7.TabIndex = 15;
@@ -488,5 +514,7 @@
         private TextBox txtHuella3;
         private Button btnAgregar3;
         private Button button8;
+        private Label label9;
+        private CheckBox chbactivo;
     }
 }

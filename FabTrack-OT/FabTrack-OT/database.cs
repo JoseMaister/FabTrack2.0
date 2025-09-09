@@ -268,7 +268,7 @@ namespace FabTrack_OT
             try
             {
                 OpenConnection();
-                string query = @"SELECT id, serie, nombre, ubicacion,direccion_plc, comentarios
+                string query = @"SELECT id, serie, nombre, ubicacion,direccion_plc, comentarios, activo
                          FROM lectores 
                          WHERE nombre LIKE @name LIMIT 1"; // Limit 1 si solo quieres el primero
 
@@ -284,6 +284,7 @@ namespace FabTrack_OT
                     lector["ubicacion"] = reader["ubicacion"].ToString();
                     lector["direccion_plc"] = reader["direccion_plc"].ToString();
                     lector["comentarios"] = reader["comentarios"].ToString();
+                    lector["activo"] = reader["activo"].ToString();
                 }
 
                 reader.Close();

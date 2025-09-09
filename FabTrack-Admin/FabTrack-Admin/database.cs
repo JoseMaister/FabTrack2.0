@@ -226,7 +226,7 @@ namespace FabTrack_Admin
             {
                 OpenConnection();
                 string query = @"SELECT id, nombre, apellido_paterno, apellido_materno, 
-                                numero_empleado, telefono, email, turno
+                                numero_empleado, telefono, email, turno, activo
                          FROM usuarios 
                          WHERE numero_empleado = @id";
 
@@ -247,6 +247,7 @@ namespace FabTrack_Admin
                     empleado["telefono"] = reader["telefono"].ToString();
                     empleado["email"] = reader["email"].ToString();
                     empleado["turno"] = reader["turno"].ToString();
+                    empleado["activo"] = reader["activo"].ToString();
                 }
 
                 reader.Close();
@@ -269,7 +270,7 @@ namespace FabTrack_Admin
             try
             {
                 OpenConnection();
-                string query = @"SELECT id, serie, nombre, ubicacion,direccion_plc, comentarios
+                string query = @"SELECT id, serie, nombre, ubicacion,direccion_plc, comentarios, activo
                          FROM lectores 
                          WHERE nombre LIKE @name LIMIT 1"; // Limit 1 si solo quieres el primero
 
@@ -285,6 +286,7 @@ namespace FabTrack_Admin
                     lector["ubicacion"] = reader["ubicacion"].ToString();
                     lector["direccion_plc"] = reader["direccion_plc"].ToString();
                     lector["comentarios"] = reader["comentarios"].ToString();
+                    lector["activo"] = reader["activo"].ToString();
                 }
 
                 reader.Close();

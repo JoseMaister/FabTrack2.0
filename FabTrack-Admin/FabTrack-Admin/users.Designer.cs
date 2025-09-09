@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            chbinactivos = new CheckBox();
             txtBuscar = new TextBox();
             button2 = new Button();
             rbNoEmpleado = new RadioButton();
@@ -43,18 +44,31 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(chbinactivos);
             panel1.Controls.Add(txtBuscar);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(rbNoEmpleado);
             panel1.Controls.Add(rbNombre);
             panel1.Location = new Point(16, 15);
             panel1.Name = "panel1";
-            panel1.Size = new Size(580, 68);
+            panel1.Size = new Size(757, 68);
             panel1.TabIndex = 0;
+            // 
+            // chbinactivos
+            // 
+            chbinactivos.AutoSize = true;
+            chbinactivos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            chbinactivos.Location = new Point(35, 14);
+            chbinactivos.Name = "chbinactivos";
+            chbinactivos.Size = new Size(110, 29);
+            chbinactivos.TabIndex = 4;
+            chbinactivos.Text = "Inactivos";
+            chbinactivos.UseVisualStyleBackColor = true;
+            chbinactivos.CheckedChanged += chbinactivos_CheckedChanged;
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(277, 23);
+            txtBuscar.Location = new Point(471, 18);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(146, 23);
             txtBuscar.TabIndex = 3;
@@ -62,7 +76,7 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(437, 13);
+            button2.Location = new Point(623, 12);
             button2.Name = "button2";
             button2.Size = new Size(117, 37);
             button2.TabIndex = 2;
@@ -74,7 +88,7 @@
             // 
             rbNoEmpleado.AutoSize = true;
             rbNoEmpleado.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            rbNoEmpleado.Location = new Point(120, 13);
+            rbNoEmpleado.Location = new Point(314, 13);
             rbNoEmpleado.Name = "rbNoEmpleado";
             rbNoEmpleado.Size = new Size(151, 29);
             rbNoEmpleado.TabIndex = 1;
@@ -86,7 +100,7 @@
             // 
             rbNombre.AutoSize = true;
             rbNombre.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            rbNombre.Location = new Point(13, 13);
+            rbNombre.Location = new Point(188, 14);
             rbNombre.Name = "rbNombre";
             rbNombre.Size = new Size(101, 29);
             rbNombre.TabIndex = 0;
@@ -149,5 +163,6 @@
         private TextBox txtBuscar;
         private DataGridView dtUsers;
         private Button button1;
+        private CheckBox chbinactivos;
     }
 }

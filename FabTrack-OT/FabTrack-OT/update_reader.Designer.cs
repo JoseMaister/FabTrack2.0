@@ -33,11 +33,13 @@
             txtBuscar = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
+            txtdbplc = new TextBox();
             txtcoments = new TextBox();
             txtubi = new TextBox();
             txtSerie = new TextBox();
             txtNombre = new TextBox();
             panel3 = new Panel();
+            label6 = new Label();
             label4 = new Label();
             label5 = new Label();
             label2 = new Label();
@@ -45,8 +47,8 @@
             panel4 = new Panel();
             button1 = new Button();
             button3 = new Button();
-            label6 = new Label();
-            txtdbplc = new TextBox();
+            chbactivo = new CheckBox();
+            label9 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -95,14 +97,22 @@
             // panel2
             // 
             panel2.Controls.Add(txtdbplc);
+            panel2.Controls.Add(chbactivo);
             panel2.Controls.Add(txtcoments);
             panel2.Controls.Add(txtubi);
             panel2.Controls.Add(txtSerie);
             panel2.Controls.Add(txtNombre);
             panel2.Location = new Point(334, 128);
             panel2.Name = "panel2";
-            panel2.Size = new Size(315, 203);
+            panel2.Size = new Size(315, 223);
             panel2.TabIndex = 13;
+            // 
+            // txtdbplc
+            // 
+            txtdbplc.Location = new Point(25, 128);
+            txtdbplc.Name = "txtdbplc";
+            txtdbplc.Size = new Size(265, 23);
+            txtdbplc.TabIndex = 7;
             // 
             // txtcoments
             // 
@@ -134,6 +144,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(label9);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label5);
@@ -141,8 +152,19 @@
             panel3.Controls.Add(label3);
             panel3.Location = new Point(92, 128);
             panel3.Name = "panel3";
-            panel3.Size = new Size(236, 203);
+            panel3.Size = new Size(236, 223);
             panel3.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.FlatStyle = FlatStyle.Flat;
+            label6.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(29, 127);
+            label6.Name = "label6";
+            label6.Size = new Size(129, 25);
+            label6.TabIndex = 6;
+            label6.Text = "Direccion PLC";
             // 
             // label4
             // 
@@ -192,7 +214,7 @@
             // 
             panel4.Controls.Add(button1);
             panel4.Controls.Add(button3);
-            panel4.Location = new Point(218, 347);
+            panel4.Location = new Point(218, 357);
             panel4.Name = "panel4";
             panel4.Size = new Size(302, 81);
             panel4.TabIndex = 14;
@@ -219,23 +241,27 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // label6
+            // chbactivo
             // 
-            label6.AutoSize = true;
-            label6.FlatStyle = FlatStyle.Flat;
-            label6.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(29, 127);
-            label6.Name = "label6";
-            label6.Size = new Size(129, 25);
-            label6.TabIndex = 6;
-            label6.Text = "Direccion PLC";
+            chbactivo.AutoSize = true;
+            chbactivo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            chbactivo.Location = new Point(25, 183);
+            chbactivo.Name = "chbactivo";
+            chbactivo.Size = new Size(87, 29);
+            chbactivo.TabIndex = 8;
+            chbactivo.Text = "Activo";
+            chbactivo.UseVisualStyleBackColor = true;
             // 
-            // txtdbplc
+            // label9
             // 
-            txtdbplc.Location = new Point(25, 128);
-            txtdbplc.Name = "txtdbplc";
-            txtdbplc.Size = new Size(265, 23);
-            txtdbplc.TabIndex = 7;
+            label9.AutoSize = true;
+            label9.FlatStyle = FlatStyle.Flat;
+            label9.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(29, 187);
+            label9.Name = "label9";
+            label9.Size = new Size(67, 25);
+            label9.TabIndex = 9;
+            label9.Text = "Activo";
             // 
             // update_reader
             // 
@@ -279,5 +305,7 @@
         private TextBox txtubi;
         private Label label6;
         private TextBox txtdbplc;
+        private CheckBox chbactivo;
+        private Label label9;
     }
 }

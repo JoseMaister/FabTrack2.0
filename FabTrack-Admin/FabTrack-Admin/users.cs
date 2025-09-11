@@ -20,7 +20,7 @@ namespace FabTrack_Admin
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            string query = "SELECT id, CONCAT(nombre, ' ', apellido_paterno, ' ', apellido_materno) AS Nombre, numero_empleado as No_Empleado, telefono as Telef, email as Email, turno as Turno FROM usuarios where activo =1";
+            string query = "SELECT id, CONCAT(nombre, ' ', apellido_paterno, ' ', apellido_materno) AS Nombre, numero_empleado as No_Empleado, telefono as Telef, email as Email, turno as Turno, activo FROM usuarios where activo =1";
 
             database db = new database();
             DataTable dt = db.ExecuteQuery(query, null);
@@ -35,6 +35,8 @@ namespace FabTrack_Admin
             dtUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             dtUsers.Columns["id"].Visible = false; // opcional
+            dtUsers.Columns["activo"].Visible = false;
+
 
         }
 

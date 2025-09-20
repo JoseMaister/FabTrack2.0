@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DyOKTpcOMLg=",
+  "dgSpecHash": "UwNgm3gaiMw=",
   "success": true,
   "projectFilePath": "C:\\Users\\eljos\\OneDrive\\Documents\\repos\\FabTrack2.0\\FabTrack-OT\\FabTrack-OT\\FabTrack-OT.csproj",
   "expectedPackageFiles": [
@@ -21,12 +21,14 @@
     "C:\\Users\\eljos\\.nuget\\packages\\s7netplus\\0.20.0\\s7netplus.0.20.0.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\sixlabors.fonts\\1.0.0\\sixlabors.fonts.1.0.0.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\eljos\\.nuget\\packages\\system.codedom\\10.0.0-rc.1.25451.107\\system.codedom.10.0.0-rc.1.25451.107.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.1\\system.diagnostics.diagnosticsource.8.0.1.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.io.packaging\\8.0.1\\system.io.packaging.8.0.1.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.io.pipelines\\9.0.0\\system.io.pipelines.9.0.0.nupkg.sha512",
+    "C:\\Users\\eljos\\.nuget\\packages\\system.management\\10.0.0-rc.1.25451.107\\system.management.10.0.0-rc.1.25451.107.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\eljos\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",

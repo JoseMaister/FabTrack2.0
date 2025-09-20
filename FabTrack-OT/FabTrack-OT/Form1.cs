@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Management;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,6 +59,30 @@ namespace FabTrack_OT
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            string hardwareId = GetHardwareId();
+
+            if (string.IsNullOrEmpty(hardwareId))
+            {
+                MessageBox.Show("No se pudo obtener el ID del procesador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+            // Abrimos el navegador con la página de licencia
+            /*string url = $"https://innovatexmexico.com/licencias/add_license.php?hardwareId={hardwareId}";
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            });*/
+
+            // Esperamos a que la licencia se active
+            if (!WaitForLicenseActivation(hardwareId))
+            {
+                MessageBox.Show("Licencia no activada. El programa se cerrará.", "Error de licencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             this.StartPosition = FormStartPosition.Manual;
             this.Size = new System.Drawing.Size(
                 Screen.PrimaryScreen.Bounds.Width,
@@ -445,6 +470,71 @@ namespace FabTrack_OT
             reports frm = new reports();
             frm.ShowDialog();
         }
+
+
+
+        private string GetHardwareId()
+        {
+            try
+            {
+                string cpuId = "";
+                ManagementClass mc = new ManagementClass("win32_processor");
+                ManagementObjectCollection moc = mc.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    cpuId = mo.Properties["ProcessorId"].Value.ToString();
+                    break;
+                }
+                return cpuId;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private bool WaitForLicenseActivation(string hardwareId, int maxIntentos = 20, int delay = 3000)
+        {
+            bool navegadorAbierto = false;
+
+            using (var client = new HttpClient())
+            {
+                for (int intentos = 0; intentos < maxIntentos; intentos++)
+                {
+                    try
+                    {
+                        var response = client.GetAsync($"https://innovatexmexico.com/licencias/check_status.php?hardwareId={hardwareId}").Result;
+                        string result = response.Content.ReadAsStringAsync().Result.Trim();
+
+                        if (result == "OK")
+                            return true;
+
+                        // Abrir navegador solo la primera vez
+                        if (!navegadorAbierto)
+                        {
+                            string url = $"https://innovatexmexico.com/licencias/add_license.php?hardwareId={hardwareId}";
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = url,
+                                UseShellExecute = true
+                            });
+                            navegadorAbierto = true;
+                        }
+                    }
+                    catch
+                    {
+                        // ignoramos errores de conexión temporal
+                    }
+
+                    System.Threading.Thread.Sleep(delay);
+                }
+            }
+
+            return false;
+        }
+
+
+
     }
 }
 
